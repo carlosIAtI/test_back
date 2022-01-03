@@ -1,3 +1,3 @@
 module.exports = {
-    RestaurantController: require('./restaurant.controller'),
+    RestaurantController: require("./restaurant.controller"),
 };

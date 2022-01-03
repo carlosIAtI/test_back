@@ -2,19 +2,19 @@ const mapper = require("automapper-js");
 const { RoleDto } = require("../dtos");
 class RestaurantController { 
      
-    constructor({ RoleService }){
-        this._role_service = RoleService;
+    constructor({ RestaurantService }){
+        this._restaurant_service = RestaurantService;
     }
 
 
     async getALL(req,res){
         try {
-            let roles = await this._role_service.getAll();
-            roles = roles.map(role => mapper(RoleDto, role));
+            let restaurant = await this._restaurant_service.getAll();
+            restaurants = restaurants.map(role => mapper(RestaurantDto, restaurant));
             return res.status(201).send({
               status: "ok",
-              msg: "Roles",
-              results: roles
+              msg: "Restaurants",
+              results: restaurants
             }); 
             
         } catch (error) {
@@ -26,11 +26,11 @@ class RestaurantController {
     async create(req,res){
         try {
             const { body } = req;
-            let role = await this._role_service.create(body);
+            let restaurant = await this._restaurant_service.create(body);
             return res.status(201).send({
               status: "ok",
-              msg: "create role",
-              result: role
+              msg: "create restaurant",
+              result: restaurant
             }); 
             
         } catch (error) {
@@ -44,12 +44,12 @@ class RestaurantController {
         try {
         const { body } = req;
         const { uuid } = req.params;
-        let role = null;
-        role = await this._role_service.getUUid(uuid);
-        if(!role)
-           return res.status(404).send({status:"error",code: 0 , msg: "user doesn't exist"});
+        let restaurant = null;
+        restaurant = await this._restaurant_service.getUUid(uuid);
+        if(!restaurant)
+           return res.status(404).send({status:"error",code: 0 , msg: "restaurant doesn't exist"});
         
-        await this._role_service.update(role.id,body);
+        await this._restaurant_service.update(restaurant.id,body);
         return res.status(201).send({
             status: "ok",
             msg: "updated update"
@@ -66,15 +66,15 @@ class RestaurantController {
     async delete(req,res){
         try {
         const { uuid } = req.params;
-        let role = null;
-        role = await this._role_service.getUUid(uuid);
-        if(!role)
-           return res.status(404).send({status:"error",code: 0 , msg: "role doesn't exist"});
+        let restaurant = null;
+        restaurant = await this._restaurant_service.getUUid(uuid);
+        if(!restaurant)
+           return res.status(404).send({status:"error",code: 0 , msg: "restaurant doesn't exist"});
         
-        await this._role_service.delete(role.id);
+        await this._restaurant_service.delete(restaurant.id);
         return res.status(201).send({
             status: "ok",
-            msg: "delete role"
+            msg: "delete restaurant"
           });   
 
             
@@ -85,18 +85,18 @@ class RestaurantController {
 
 
 
-    async getRole(req,res){
+    async getRestaurant(req,res){
         try {
 
             const { uuid } = req.params;
-            let role = null;
-            role = await this._role_service.getUUid(uuid);
-            if(!role)
-               return res.status(404).send({status:"error",code: 0 , msg: "role doesn't exist"});
+            let restaurant = null;
+            restaurant = await this._restaurant_service.getUUid(uuid);
+            if(!restaurant)
+               return res.status(404).send({status:"error",code: 0 , msg: "restaurant doesn't exist"});
             return res.status(201).send({
               status: "ok",
               msg: "Role ",
-              result: role
+              result: restaurant
             }); 
             
         } catch (error) {
