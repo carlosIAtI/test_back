@@ -1,5 +1,5 @@
 const mapper = require("automapper-js");
-const { RoleDto } = require("../dtos");
+const { RestaurantDto } = require("../dtos");
 class RestaurantController { 
      
     constructor({ RestaurantService }){
@@ -9,7 +9,7 @@ class RestaurantController {
 
     async getALL(req,res){
         try {
-            let restaurant = await this._restaurant_service.getAll();
+            let restaurants = await this._restaurant_service.getAll();
             restaurants = restaurants.map(role => mapper(RestaurantDto, restaurant));
             return res.status(201).send({
               status: "ok",

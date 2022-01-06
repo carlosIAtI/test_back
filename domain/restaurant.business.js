@@ -6,4 +6,4 @@ class RestaurantBusiness extends BaseBusiness{
   }
   
 }
-module.exports = RestaurantBusiness;
+module.exports = RestaurantBusiness;  

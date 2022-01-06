@@ -31,14 +31,14 @@ const { RestaurantService ,  } = require('../services');
 
 //Middlewrares
 
-const { Middleware } = require('../api/middlewares');
+//const { Middleware } = require('../api/middlewares');
  
 
 container.register({
   app: asClass(StartUp).singleton(),
   router: asFunction(Routes).singleton(),
   server: asClass(Server).singleton(),
-  Middleware: asClass(Middleware).singleton(),
+  //Middleware: asClass(Middleware).singleton,
   RestaurantController: asClass(RestaurantController).singleton(),
   RestaurantRoutes: asFunction(RestaurantRoutes).singleton(),
 

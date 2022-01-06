@@ -2,9 +2,9 @@ const BaseRepository = require("./base.repository");
 
 class RestaurantRepository extends BaseRepository {
   constructor({ db }) {
-    super(db, "restaurant");
+    super(db, "Restaurant");
     this._db = db;
-    this._entity = "restaurant";
+    this._entity = "Restaurant";
   }
 }
  
