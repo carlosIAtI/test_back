@@ -10,7 +10,7 @@ class RestaurantController {
     async getALL(req,res){
         try {
             let restaurants = await this._restaurant_service.getAll();
-            restaurants = restaurants.map(role => mapper(RestaurantDto, restaurant));
+            restaurants = restaurants.map(restaurant => mapper(RestaurantDto, restaurant));
             return res.status(201).send({
               status: "ok",
               msg: "Restaurants",
